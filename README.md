@@ -11,7 +11,8 @@
 ```bash
 docker-compose up --build
 ```
-
+> Now your server will be running on localhost:3000.
+>
 ---
 
 # How to Test (Manually)
