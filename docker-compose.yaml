@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    image: anasmohammed361/angular-url-shortener
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - DB_URI=mongodb://root:example@mongo:27017/
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
