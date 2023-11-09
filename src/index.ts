@@ -1,12 +1,19 @@
 import express from "express";
 import mongoose from "mongoose";
 import { urlModel } from "./lib/models";
+import { config } from "dotenv";
+config({path:".env.local"});
+const { DB_URI } = process.env;
+if (!DB_URI) {
+  throw new Error("No Database Url Found");
+}
 
 const app = express();
 
 app.use(express.json());
-app.use(express.static("public"))
-mongoose.connect("mongodb://127.0.0.1:27017/test").then(() => {
+app.use(express.static("public"));
+
+mongoose.connect(DB_URI).then(() => {
   console.log("Db Connected");
 });
 
@@ -36,8 +43,6 @@ app.get("/:shortenedUrl", async (req, res) => {
   }
 });
 
-
-app.listen(3000,()=>{
-    console.log("Server running on http://localhost:3000/");
-    
-})
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000/");
+});
