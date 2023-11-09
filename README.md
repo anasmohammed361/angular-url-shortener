@@ -1,7 +1,5 @@
 # ANGULAR URL SHORTENER
 
----
-
 > We highly recommend you to use Docker compose
 > 
 
